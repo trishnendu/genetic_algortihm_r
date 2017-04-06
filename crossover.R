@@ -1,14 +1,14 @@
 crossover <- function(a, b){
   #takes a single chromosome and crossovers and returns both chromosomes
-  len = length(a)
-  l = len/2
-  c = rep(0, len = len) # new chromosome
-  d = c                 # new chromosome
-  c[1:l] = a[1:l]
-  c[(l+1):len] = b[(l+1):len]
-  d[1:l] = b[1:l]
-  d[(l+1):len] = a[(l+1):len]
-  return(list(c, d))  
+  len <-length(a);
+  
+  point_1 <-floor(runif(1,min=0,max = len/2));
+  point_2 <-(floor(runif(1,min=len/2+1,max = len-1)));
+  c = a;
+  d = b;
+  c[(point_1+1):point_2] = b[(point_1+1):point_2];
+  d[(point_1+1):point_2] = a[(point_1+1):point_2];
+  return(list(c,d))
 }
 
 mutation <- function(a){
